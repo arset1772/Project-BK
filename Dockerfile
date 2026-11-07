@@ -2,10 +2,9 @@ FROM richarvey/nginx-php-fpm:latest
 
 COPY . /var/www/html
 
-ENV WORKDIR=/var/www/html
+ENV WEBROOT=/var/www/html/public
 ENV APP_ENV=production
-ENV APP_KEY=base64:AZv8oQ1y0ou0CgDhzRbYSi2+w1s54OrumRKFt2gP2DU=
-ENV DOCUMENT_ROOT=/var/www/html/public
+ENV APP_DEBUG=false
 
 RUN composer install --no-dev --optimize-autoloader
 
