@@ -373,7 +373,7 @@
   <!-- FOOTER -->
   <footer class="bg-white border-t border-slate-200 py-3 px-6 flex flex-col sm:flex-row items-center justify-between gap-1">
     <p class="text-xs text-slate-400">
-      <strong class="text-slate-600">SIBK</strong> — Sistem Informasi Bimbingan & Konseling &copy; {{ date('Y') }}
+      <strong class="text-slate-600">PLBK</strong> — Pusat Layanan Bimbingan & Konseling &copy; {{ date('Y') }}
     </p>
     <p class="text-xs text-slate-400">Layanan Asesmen Minat, Bakat & Penempatan Peminatan Siswa</p>
   </footer>

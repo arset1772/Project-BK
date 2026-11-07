@@ -175,7 +175,7 @@
         <i class="fa-solid fa-graduation-cap text-white text-xl"></i>
       </div>
       <div>
-        <h1 class="text-xl font-black text-slate-800">SIBK</h1>
+        <h1 class="text-xl font-black text-slate-800">PLBK</h1>
         <p class="text-xs text-slate-500">Pusat Layanan Bimbingan & Konseling</p>
       </div>
     </div>
