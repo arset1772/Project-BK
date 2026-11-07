@@ -1,11 +1,13 @@
-FROM richarvey/nginx-php-fpm:latest
+FROM php:8.3-cli-alpine
 
-COPY . /var/www/html
+RUN docker-php-ext-install pdo pdo_mysql
 
-ENV WEBROOT=/var/www/html/public
-ENV APP_ENV=production
-ENV APP_DEBUG=false
+WORKDIR /app
+COPY . .
 
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN composer install --no-dev --optimize-autoloader
 
-EXPOSE 80
+EXPOSE 8000
+
+CMD ["sh", "-c", "touch database/database.sqlite && php artisan migrate --force && php artisan db:seed --force && php artisan serve --host=0.0.0.0 --port=${PORT:-8000}"]
