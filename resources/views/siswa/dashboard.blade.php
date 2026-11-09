@@ -287,12 +287,7 @@
             <label class="block text-sm font-bold text-slate-700 mb-2">
               <i class="fa-solid fa-school text-blue-600 mr-1.5"></i>Pilih Kelas Anda
             </label>
-            <select name="kelas" required class="input-elegant w-full px-4 py-3 rounded-xl bg-white text-sm text-slate-800">
-              <option value="" disabled selected>— Pilih kelas —</option>
-              @foreach(['X-1','X-2','X-3','XI-IPA-1','XI-IPA-2','XI-IPS-1','XI-IPS-2','XII-IPA-1','XII-IPA-2','XII-IPS-1','XII-IPS-2'] as $k)
-                <option value="{{ $k }}">{{ $k }}</option>
-              @endforeach
-            </select>
+            <input name="kelas" required placeholder="Contoh: X-1 atau XI IPA 3"class"input-elegant w-full px-4 py-3 rounded-xl bg-white text-sm text-slate-800">
           </div>
 
           {{-- 10 Pertanyaan --}}
