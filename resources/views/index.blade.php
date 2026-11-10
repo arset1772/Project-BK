@@ -76,6 +76,10 @@
               <input type="text" name="nama" required placeholder="Contoh: Budi Santoso" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs">
             </div>
             <div>
+              <label class="block text-xs font-semibold text-slate-600 mb-1">Kelas (Opsional)</label>
+              <input type="text" name="kelas" placeholder="Contoh: X-1, XI IPA 1, XII IPS 2" value="{{ old('kelas') }}" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs">
+            </div>
+            <div>
               <label class="block text-xs font-semibold text-slate-600 mb-1">NISN</label>
               <input type="number" name="nisn" required placeholder="10 Digit NISN" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs">
             </div>
@@ -125,13 +129,8 @@
                 </div>
 
                 <div>
-                  <label class="block text-xs font-semibold text-slate-600 mb-1">Pilih Kelas Anda</label>
-                  <select name="kelas" required class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white">
-                    <option value="X-1">X-1</option>
-                    <option value="XI-IPA-1">XI IPA 1</option>
-                    <option value="XI-IPS-1">XI IPS 1</option>
-                    <option value="XII-IPA-1">XII IPA 1</option>
-                  </select>
+                  <label class="block text-xs font-semibold text-slate-600 mb-1">Kelas Anda</label>
+                  <input type="text" name="kelas" required placeholder="Masukkan Kelas Anda (Contoh: X-1, XI IPA 1)" value="{{ old('kelas', ($currentSiswa && $currentSiswa->kelas !== '-') ? $currentSiswa->kelas : '') }}" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:outline-none focus:ring-2 focus:ring-emerald-600">
                 </div>
 
                 <!-- Pertanyaan 1 -->

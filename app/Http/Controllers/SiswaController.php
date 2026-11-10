@@ -21,18 +21,28 @@ class SiswaController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'nama' => 'required|string|max:255',
-            'nisn' => 'required|digits_between:1,20',
+            'nama'  => 'required|string|max:255',
+            'nisn'  => 'required|digits_between:1,20',
+            'kelas' => 'nullable|string|max:50',
         ]);
+
+        $kelas = $request->filled('kelas') ? trim($request->kelas) : '-';
 
         $siswa = Siswa::firstOrCreate(
             ['nisn' => $request->nisn],
-            ['nama' => $request->nama, 'kelas' => '-', 'status' => 'Belum Asesmen']
+            ['nama' => $request->nama, 'kelas' => $kelas, 'status' => 'Belum Asesmen']
         );
 
-        // Jika NISN sudah ada, update nama jika berbeda
+        // Jika NISN sudah ada, perbarui nama atau kelas jika diinput
+        $updates = [];
         if (!$siswa->wasRecentlyCreated && $siswa->nama !== $request->nama) {
-            // Tetap gunakan data yang sudah ada, tidak perlu update nama
+            $updates['nama'] = $request->nama;
+        }
+        if ($request->filled('kelas') && $siswa->kelas !== $request->kelas) {
+            $updates['kelas'] = $request->kelas;
+        }
+        if (!empty($updates)) {
+            $siswa->update($updates);
         }
 
         session(['siswa_id' => $siswa->id]);

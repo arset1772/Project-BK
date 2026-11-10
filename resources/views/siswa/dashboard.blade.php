@@ -282,12 +282,26 @@
         <form action="{{ route('siswa.assessment') }}" method="POST" id="assessment-form" class="space-y-4">
           @csrf
 
-          <!-- Pilih Kelas -->
+          <!-- Kelas Siswa -->
           <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
             <label class="block text-sm font-bold text-slate-700 mb-2">
-              <i class="fa-solid fa-school text-blue-600 mr-1.5"></i>Pilih Kelas Anda
+              <i class="fa-solid fa-school text-blue-600 mr-1.5"></i>Kelas Anda
             </label>
-            <input name="kelas" required placeholder="Contoh: X-1 atau XI IPA 3"class"input-elegant w-full px-4 py-3 rounded-xl bg-white text-sm text-slate-800">
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                <i class="fa-solid fa-chalkboard-user text-slate-400 text-sm"></i>
+              </div>
+              <input 
+                type="text" 
+                name="kelas" 
+                id="input-kelas" 
+                required 
+                placeholder="Masukkan kelas Anda (Contoh: X-1, XI IPA 3, XII IPS 2)" 
+                value="{{ old('kelas', ($currentSiswa && $currentSiswa->kelas !== '-') ? $currentSiswa->kelas : '') }}" 
+                class="input-elegant w-full pl-10 pr-4 py-3 rounded-xl bg-white text-sm text-slate-800 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600"
+              >
+            </div>
+            <p class="text-xs text-slate-400 mt-1.5">Ketikkan nama kelas Anda secara manual.</p>
           </div>
 
           {{-- 10 Pertanyaan --}}

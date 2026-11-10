@@ -227,6 +227,23 @@
         </div>
 
         <div>
+          <label class="block text-sm font-semibold text-slate-700 mb-2">Kelas</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+              <i class="fa-solid fa-school text-slate-400 text-sm"></i>
+            </div>
+            <input
+              type="text"
+              name="kelas"
+              id="kelas"
+              placeholder="Contoh: X-1, XI IPA 2, XII IPS 1 (Opsional)"
+              value="{{ old('kelas') }}"
+              class="input-elegant w-full pl-10 pr-4 py-3 rounded-xl bg-white text-sm text-slate-800"
+            >
+          </div>
+        </div>
+
+        <div>
           <label class="block text-sm font-semibold text-slate-700 mb-2">NISN</label>
           <div class="relative">
             <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
