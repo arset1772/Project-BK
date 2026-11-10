@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\URL;
 use App\Models\Guru;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,6 +23,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Paksa HTTPS di production / Railway agar terhindar dari mixed content & blokir Safari iOS/macOS
+        if (app()->environment('production') || str_starts_with(config('app.url'), 'https://') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https')) {
+            URL::forceScheme('https');
+        }
+
         // Bagikan data Guru BK untuk konsultasi ke semua view blade
         View::composer('*', function ($view) {
             $defaultNama = 'Ahmad Julio Fikri';
